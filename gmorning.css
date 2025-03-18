@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmorning by Gumac - Gmorning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url(https://scontent.fsgn1-1.fna.fbcdn.net/v/t39.30808-6/470579348_401443392984715_6662659381806915105_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=86c6b0&_nc_ohc=HVsnjhndFKAQ7kNvgHiAQYM&_nc_oc=AdjIGBzxERfPkNmbH5LLAfYbYQORdYLCbot2NWsd_oYZz1iHpVBqvFYDYB1gxGbI3y0&_nc_zt=23&_nc_ht=scontent.fsgn1-1.fna&_nc_gid=Hhka31FzLZvHUBQpw3NtDg&oh=00_AYEFQaIYVQ8MZCUKFQARhC4W5lZtUlfdwl-r2kJIPKBM0g&oe=67DEBFAC) no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .overlay {
+            background: linear-gradient(rgba(255, 245, 240, 0.7), rgba(131, 171, 247, 0.2));
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            padding: 60px 0;
+            background: rgba(252, 241, 249, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header h1 {
+            font-size: 4em;
+            color: #ff76cd;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        header h1 span {
+            color: #8bc9f8;
+            font-style: italic;
+        }
+
+        header p {
+            font-size: 1.3em;
+            color: #004cff;
+            margin-top: 15px;
+            font-weight: 300;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 40px;
+            background: linear-gradient(90deg, #e76f51, #f4a261);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(231, 111, 81, 0.4);
+        }
+
+        .explore-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(231, 111, 81, 0.6);
+        }
+
+        .signup-section {
+            background: rgba(255, 175, 219, 0.9);
+            padding: 50px 30px;
+            border-radius: 15px;
+            color: rgb(0, 0, 0);
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .signup-section h2 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .signup-section p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+
+        .signup-form input[type="email"] {
+            padding: 12px;
+            width: 350px;
+            border: none;
+            border-radius: 25px;
+            margin-bottom: 15px;
+            font-size: 1em;
+            outline: none;
+            transition: box-shadow 0.3s;
+        }
+
+        .signup-form input[type="email"]:focus {
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .signup-form button {
+            padding: 14px 40px;
+            background: linear-gradient(90deg, #ff5330, #f5955e);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .signup-form button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(90deg, #63c9f1, #64a3fb);
+        }
+
+        .wheel-section {
+            padding: 50px 0;
+            background: rgba(254, 166, 209, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+            position: relative;
+        }
+
+        .wheel-section h2 {
+            font-size: 2.2em;
+            color: #000000;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        #wheel {
+            width: 350px;
+            height: 350px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        #arrow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -150%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 25px solid #e76f51;
+            z-index: 10;
+        }
+
+        #spin-btn {
+            display: block;
+            margin: 25px auto;
+            padding: 14px 40px;
+            background: linear-gradient(90deg, #fd4a4a, #f4a261);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(231, 111, 81, 0.4);
+        }
+
+        #spin-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(231, 111, 81, 0.6);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.3em;
+            color: #f46fa8;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #ffffff, #2ac3ff);
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+            margin-top: 40px;
+            font-weight: 300;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <header>
+                <h1><span>Gmorning</span> by <span>Gumac</span></h1>
+                <p>Khởi đầu ngày mới, hòa nhịp ngày nâng niu làn da cùng nhịp thở tinh tế tinh thần</p>
+                <a href="https://gumac.vn" class="explore-btn" target="_blank">Khám Phá Ngay</a>
+            </header>
+
+            <div class="signup-section">
+                <h2>Ưu Đãi Đặc Biệt</h2>
+                <p>Nhập thông tin để nhận ngay voucher giảm giá cho đơn hàng đầu tiên!</p>
+                <div class="signup-form">
+                    <input type="email" id="userEmail" placeholder="Nhập email của bạn" value="">
+                    <button onclick="showWheel()">Đăng Ký Ngay</button>
+                </div>
+            </div>
+
+            <div class="wheel-section" id="wheel-container" style="display: none;">
+                <h2>Xoay Vòng May Mắn - Nhận Voucher Ngay!</h2>
+                <div id="arrow"></div>
+                <canvas id="wheel" width="350" height="350"></canvas>
+                <button id="spin-btn">Xoay Ngay</button>
+                <div id="result"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Gmorning by Gumac. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const wheel = document.getElementById('wheel');
+        const ctx = wheel.getContext('2d');
+        const spinBtn = document.getElementById('spin-btn');
+        const result = document.getElementById('result');
+        const wheelContainer = document.getElementById('wheel-container');
+        const userEmail = document.getElementById('userEmail');
+        const arrow = document.getElementById('arrow');
+
+        const prizes = ['10%', '20%', '30%', '50%', '70%'];
+        let rotation = 0;
+        let isSpinning = false;
+        let wonPrize = '';
+
+        function drawWheel() {
+            const angle = (2 * Math.PI) / prizes.length;
+            ctx.clearRect(0, 0, wheel.width, wheel.height);
+            for (let i = 0; i < prizes.length; i++) {
+                ctx.beginPath();
+                ctx.moveTo(175, 175);
+                ctx.arc(175, 175, 175, i * angle, (i + 1) * angle);
+                ctx.fillStyle = `hsl(${i * 60}, 70%, 85%)`;
+                ctx.fill();
+                ctx.save();
+                ctx.translate(175, 175);
+                ctx.rotate(i * angle + angle / 2);
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 22px Poppins';
+                ctx.fillText(prizes[i], 90, 20);
+                ctx.restore();
+            }
+            ctx.beginPath();
+            ctx.arc(175, 175, 25, 0, 2 * Math.PI);
+            ctx.fillStyle = '#e76f51';
+            ctx.fill();
+        }
+
+        function spin() {
+            if (isSpinning) return;
+            isSpinning = true;
+            const randomPrizeIndex = Math.floor(Math.random() * prizes.length);
+            wonPrize = prizes[randomPrizeIndex];
+            const extraRotation = 360 * 5 + (randomPrizeIndex * (360 / prizes.length));
+            rotation += extraRotation;
+
+            const duration = 6000;
+            const startTime = performance.now();
+
+            function animate(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const currentRotation = rotation * progress;
+                ctx.clearRect(0, 0, wheel.width, wheel.height);
+                ctx.save();
+                ctx.translate(175, 175);
+                ctx.rotate((currentRotation * Math.PI) / 180);
+                ctx.translate(-175, -175);
+                drawWheel();
+                ctx.restore();
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    isSpinning = false;
+                    result.textContent = `Chúc mừng! Bạn nhận được voucher ${wonPrize} cho đơn hàng đầu tiên!`;
+                    sendVoucherEmail();
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        function showWheel() {
+            if (!userEmail.value) {
+                alert('Vui lòng nhập email để nhận voucher!');
+                return;
+            }
+            wheelContainer.style.display = 'block';
+            drawWheel();
+            spinBtn.addEventListener('click', spin);
+        }
+
+        function sendVoucherEmail() {
+            const email = userEmail.value;
+            // Giả lập gửi email (thay bằng API thực tế)
+            console.log(`Gửi voucher ${wonPrize} đến ${email}`);
+            alert(`Voucher ${wonPrize} đã được gửi đến ${email}. Vui lòng kiểm tra email để sử dụng khi mua tại Gmorning!`);
+
+            // Hướng dẫn tích hợp thực tế:
+            // Sử dụng API email như Nodemailer (Node.js) hoặc PHP mail()
+            // Ví dụ với fetch API (cần server backend):
+            /*
+            fetch('your-backend-endpoint', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email, voucher: wonPrize })
+            })
+            .then(response => response.json())
+            .then(data => alert(`Voucher ${wonPrize} đã được gửi đến ${email}!`))
+            .catch(error => console.error('Lỗi gửi email:', error));
+            */
+        }
+
+        drawWheel();
+    </script>
+</head>
+</html>
